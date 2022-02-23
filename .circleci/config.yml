@@ -12,7 +12,7 @@ jobs:
             - checkout
       - run:
           name: Adding host to knownhost
-          command: ssh-keyscan -H 34.229.9.19 >> ~/.ssh/known_hosts
+          command: ssh-keyscan -H 44.201.255.101 >> ~/.ssh/known_hosts
       - run:
           name: AWS EC2 deploy
           command: |
