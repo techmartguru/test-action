@@ -16,8 +16,8 @@ jobs:
       - run:
           name: AWS EC2 deploy
           command: |
-            ssh -o StrictHostKeyChecking=no ec2-user@44.201.255.101 \
-            "echo Start deploy && \
-            scp -r -o StrictHostKeyChecking=no index.php ec2-user@44.201.255.101:/home/ubuntu/index.php && \
-            ssh ec2-user@44.201.255.101 'sudo mv /home/ubuntu/index.php usr/share/nginx/html/> dev/null &' && \
+            ssh -o StrictHostKeyChecking=no ec2-user@44.201.255.101
+            "echo Start deploy
+            scp -r -o StrictHostKeyChecking=no index.php ec2-user@44.201.255.101:/home/ubuntu/index.php
+            ssh ec2-user@44.201.255.101 'sudo mv /home/ubuntu/index.php usr/share/nginx/html/> dev/null &'
             echo "deployment done"
