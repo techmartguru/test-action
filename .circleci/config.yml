@@ -12,33 +12,12 @@ jobs:
             - checkout
       - run:
           name: Adding host to knownhost
-          command: ssh-keyscan -H 44.201.255.101 >> ~/.ssh/known_hosts
-      - run:
-          name: build
-          no_output_timeout: 20m
-          command: |
-            set -eEx -o pipefail
-            hostname -I
-            echo "build is done"
-  deploy:
-    docker:
-      - image: circleci/node:chakracore-8.11.1
-    steps:
+          command: ssh-keyscan -H 34.229.9.19 >> ~/.ssh/known_hosts
       - run:
           name: AWS EC2 deploy
           command: |
             ssh -o StrictHostKeyChecking=no ec2-user@44.201.255.101 \
             "echo Start deploy && \
-            scp -r -o StrictHostKeyChecking=no index.php ec2-user@44.201.255.101:/home/ubuntu/index.php
-            ssh ec2-user@44.201.255.101 'sudo mv /home/ubuntu/index.php usr/share/nginx/html/> dev/null &'
-             echo "deployment done"            
-
-            echo Deploy end"
-workflows:
-  version: 2
-  build-and-deploy:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
+            scp -r -o StrictHostKeyChecking=no index.php ec2-user@44.201.255.101:/home/ubuntu/index.php && \
+            ssh ec2-user@44.201.255.101 'sudo mv /home/ubuntu/index.php usr/share/nginx/html/> dev/null &' && \
+            echo "deployment done"
