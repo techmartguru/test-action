@@ -8,16 +8,16 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - "50:d0:85:97:f2:e4:9a:7c:0e:77:0f:55:8d:af:0b:fe"
+            - "77:b3:dc:a8:b1:f6:8c:52:81:02:07:46:07:cb:97:f3"
             - checkout
       - run:
           name: Adding host to knownhost
-          command: ssh-keyscan -H 44.201.255.101 >> ~/.ssh/known_hosts
+          command: ssh-keyscan -H 54.147.236.31 >> ~/.ssh/known_hosts
       - run:
           name: AWS EC2 deploy
           command: |
-            ssh -o StrictHostKeyChecking=no ec2-user@44.201.255.101
+            ssh -o StrictHostKeyChecking=no ec2-user@54.147.236.31
             "echo Start deploy
-            scp -r -o StrictHostKeyChecking=no index.php ec2-user@44.201.255.101:/home/ubuntu/index.php
-            ssh ec2-user@44.201.255.101 'sudo mv /home/ubuntu/index.php usr/share/nginx/html/> dev/null &'
+            scp -r -o StrictHostKeyChecking=no index.php ec2-user@54.147.236.31:/home/ec2-user/index.php
+            ssh ec2-user@54.147.236.31 'sudo mv /home/ec2-user/index.php usr/share/nginx/html/> dev/null &'
             echo "deployment done"
