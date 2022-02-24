@@ -20,4 +20,3 @@ jobs:
             "echo Start deploy
             scp -r -o StrictHostKeyChecking=no index.php ec2-user@54.147.236.31:/home/ec2-user/index.php
             ssh ec2-user@54.147.236.31 'sudo mv /home/ec2-user/index.php /usr/share/nginx/html/> dev/null &'
-            echo "deployment done"
