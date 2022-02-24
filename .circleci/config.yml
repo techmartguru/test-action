@@ -16,7 +16,6 @@ jobs:
       - run:
           name: AWS EC2 Copy
           command: |
-            ssh -o StrictHostKeyChecking=no ec2-user@54.147.236.31
             scp -r -o StrictHostKeyChecking=no index.php ec2-user@54.147.236.31:/home/ec2-user/index.php
       - run:
           name: AWS EC2 deploy
