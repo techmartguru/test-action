@@ -20,7 +20,7 @@ jobs:
       - run:
           name: AWS EC2 deploy
           command: |
-            ssh ec2-user@54.147.236.31 'sudo mv /home/ec2-user/index.php /usr/share/nginx/html/> dev/null &'
+            ssh ec2-user@54.147.236.31 'sudo cp /home/ec2-user/index.php /usr/share/nginx/html/index.php && rm -rf /home/ec2-user/index.php > dev/null &'
             echo "deployment done"
 
 
